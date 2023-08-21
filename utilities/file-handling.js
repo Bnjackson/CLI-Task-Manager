@@ -13,3 +13,5 @@ async function readTaskFile(filePath) {
         console.error(`Got an errror trying to read ${filePath} : ${err}`);
     }
 }
+
+readTaskFile(filePath);
