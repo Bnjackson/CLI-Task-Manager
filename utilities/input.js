@@ -1,5 +1,3 @@
-'use stict';
-
 const readlineSync = require('readline-sync');
 
 console.log(`The commands are:

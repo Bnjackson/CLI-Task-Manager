@@ -1,5 +1,3 @@
-'use sync';
-
 const fs = require('fs');
 
 const filePath = './data/data.json';
