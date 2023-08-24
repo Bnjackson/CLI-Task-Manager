@@ -12,8 +12,21 @@ async function readTaskFile(filePath) {
     }
 }
 
+async function writeTaskfile(tasksFile, filePath = './data/data.json') {
+  const tasksFileJSON = JSON.stringify(tasksFile);
+  fs.writeFile(filePath, tasksFileJSON, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("File written successfully\n");
+    }
+  });
+
+}
+
 const tasksFile = readTaskFile(filePath);
 
 module.exports = {
-  tasksFile
+  tasksFile,
+  writeTaskfile
 };
