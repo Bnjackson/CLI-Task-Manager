@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fsPromises = require('fs/promises');
 
 const filePath = './data/data.json';
 
@@ -14,14 +15,12 @@ async function readTaskFile(filePath) {
 
 async function writeTaskfile(tasksFile, filePath = './data/data.json') {
   const tasksFileJSON = JSON.stringify(tasksFile);
-  fs.writeFile(filePath, tasksFileJSON, (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("File written successfully\n");
-    }
-  });
-
+  try {
+    await fsPromises.writeFile(filePath, tasksFileJSON);
+    console.log('File written successfully');
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 const tasksFile = readTaskFile(filePath);
