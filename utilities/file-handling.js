@@ -10,6 +10,7 @@ async function readTaskFile(filePath) {
         return parsedData;
     } catch (err) {
         console.error(`Got an errror trying to read ${filePath} : ${err}`);
+        throw err;
     }
 }
 
@@ -19,7 +20,7 @@ async function writeTaskfile(tasksFile, filePath = './data/data.json') {
     await fsPromises.writeFile(filePath, tasksFileJSON);
     console.log('File written successfully');
   } catch (err) {
-    console.log(err);
+    console.log(`An error occurred while writing ${filePath}: ${err}`);
   }
 }
 
