@@ -21,8 +21,8 @@ async function getUserInput() {
     return checkInput(userInput) ? userInput : getUserInput();
 }
 
-const userCommand = getUserInput(); 
+
 
 module.exports = {
-    userCommand
+    getUserInput
 }
