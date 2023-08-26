@@ -1,30 +1,25 @@
 const readlineSync = require('readline-sync');
 
 function updateTask(tasksFile) {
-    console.table(tasksFile);
+    console.table(tasksFile.tasks);
     const taskToUpdate = Number(readlineSync.question('What task would you like to change? Enter the tasks index, input must be numerical '));
     function checkInput(userInput) {
-        if (!isNaN(userInput) && tasksFile.tasks[userInput]) {
-            getUpdatedTask();
+        if (tasksFile.tasks[userInput]) {
+            getUpdatedTask()
         } else {
             console.log('Input must be numerical and must match a tasks index');
             updateTask(tasksFile);
         }
     }
-    checkInput();
+    checkInput(taskToUpdate);
     function getUpdatedTask()  {
         const updatedTask = readlineSync.question('Enter the updated task: ');
         if (updatedTask) {
-            return updatedTask;
+            tasksFile.tasks[taskToUpdate] = updatedTask;
         } else {
-            return false;
+            console.log('Updated task must not be an empty value');
+            getUpdatedTask();
         }
-    }
-    if(getUpdatedTask()) {
-        tasksFile.tasks[taskToUpdate] = getUpdatedTask;
-    } else {
-        console.log('Updated task must not be an empty value');
-        getUpdatedTask();
     }
 }
 
